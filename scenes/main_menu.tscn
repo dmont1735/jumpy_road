@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://c850u0c6g6hxp"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_gdc2q"]
+[ext_resource type="PackedScene" uid="uid://dmtlio81enyou" path="res://scenes/options_menu.tscn" id="2_nmbje"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_gdc2q")
+
+[node name="Options" parent="." instance=ExtResource("2_nmbje")]
+visible = false
+offset_left = 414.0
+offset_top = 164.0
+offset_right = 814.0
+offset_bottom = 264.0
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 614.0
+offset_top = 214.0
+offset_right = 614.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.5
+offset_right = 100.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/MarginContainer"]
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Options" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="Main/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/NewGame" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Options" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Main/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]

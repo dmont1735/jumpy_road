@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwr2ijg6auuxn"]
+
+[ext_resource type="Texture2D" uid="uid://fana0qissaiy" path="res://icon.svg" id="1_io2si"]
+[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_l38v2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_082a5"]
+size = Vector2(126, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttg40"]
+size = Vector2(130, 63)
+
+[node name="Car" type="AnimatableBody2D" groups=["obstacles"]]
+sync_to_physics = false
+script = ExtResource("1_l38v2")
+metadata/move_speed = 250.0
+metadata/type = "car"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(1, 0.5)
+texture = ExtResource("1_io2si")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_082a5")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["obstacle_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -32.5)
+shape = SubResource("RectangleShape2D_ttg40")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(6.52, 3.24)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

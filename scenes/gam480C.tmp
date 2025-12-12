@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://ded3y4phcha40"]
+
+[ext_resource type="PackedScene" uid="uid://c3aaaanswou8a" path="res://scenes/player.tscn" id="1_0dtor"]
+[ext_resource type="Script" path="res://scenes/ScoreLabel.gd" id="1_pam8o"]
+[ext_resource type="Script" path="res://scripts/ObstacleSpawner.gd" id="1_tcn57"]
+[ext_resource type="PackedScene" uid="uid://pgqrn4b43a63" path="res://scenes/platform.tscn" id="3_onxok"]
+[ext_resource type="PackedScene" uid="uid://ckcx2dbwru4yn" path="res://scenes/helicopter.tscn" id="3_s0vwu"]
+[ext_resource type="PackedScene" uid="uid://dwr2ijg6auuxn" path="res://scenes/car.tscn" id="3_xol1k"]
+[ext_resource type="Script" path="res://scenes/ScoreGoal.gd" id="5_s82ad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1tni"]
+size = Vector2(257, 98)
+
+[node name="Game" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -559.0
+offset_top = -308.0
+offset_right = -519.0
+offset_bottom = -268.0
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+offset_right = 48.0
+offset_bottom = 26.0
+text = "Score:"
+script = ExtResource("1_pam8o")
+
+[node name="HighscoreLabel" type="Label" parent="Control"]
+offset_top = 26.0
+offset_right = 82.0
+offset_bottom = 52.0
+text = "Highscore:"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ObstacleSpawner" type="Node2D" parent="."]
+position = Vector2(650, 0)
+script = ExtResource("1_tcn57")
+obstacle_scenes = Array[PackedScene]([ExtResource("3_xol1k"), ExtResource("3_s0vwu")])
+
+[node name="ObstacleContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_0dtor")]
+position = Vector2(-450, 265)
+scale = Vector2(0.479999, 0.72)
+
+[node name="Platform" parent="." instance=ExtResource("3_onxok")]
+position = Vector2(0, 265)
+
+[node name="ScoreGoal" type="Area2D" parent="." groups=["score_goal"]]
+position = Vector2(-559, 233)
+scale = Vector2(1, 9.8)
+script = ExtResource("5_s82ad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreGoal"]
+position = Vector2(-59.5, -18)
+shape = SubResource("RectangleShape2D_b1tni")
+
+[connection signal="body_entered" from="ScoreGoal" to="ScoreGoal" method="_on_body_entered"]

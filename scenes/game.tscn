@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://ded3y4phcha40"]
+
+[ext_resource type="PackedScene" uid="uid://c3aaaanswou8a" path="res://scenes/player.tscn" id="1_0dtor"]
+[ext_resource type="Script" path="res://scripts/Scores.gd" id="1_6c76c"]
+[ext_resource type="Script" path="res://scripts/ObstacleSpawner.gd" id="1_tcn57"]
+[ext_resource type="PackedScene" uid="uid://u2xkiaktnp1a" path="res://scenes/pause_menu.tscn" id="3_ywbxn"]
+[ext_resource type="PackedScene" uid="uid://dwr2ijg6auuxn" path="res://scenes/car.tscn" id="4_b2mwa"]
+[ext_resource type="PackedScene" uid="uid://dmtlio81enyou" path="res://scenes/options_menu.tscn" id="4_d8wlx"]
+[ext_resource type="PackedScene" uid="uid://ckcx2dbwru4yn" path="res://scenes/helicopter.tscn" id="5_dft8f"]
+[ext_resource type="PackedScene" uid="uid://cjojueq0q3qxc" path="res://scenes/death_screen.tscn" id="5_hf7ot"]
+[ext_resource type="PackedScene" uid="uid://pgqrn4b43a63" path="res://scenes/platform.tscn" id="5_wgmp7"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Scores" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -502.0
+offset_top = -273.0
+offset_right = -462.0
+offset_bottom = -233.0
+script = ExtResource("1_6c76c")
+
+[node name="ScoreLabel" type="Label" parent="Scores"]
+layout_mode = 0
+offset_top = -62.0
+offset_right = 48.0
+offset_bottom = -36.0
+text = "Score:"
+
+[node name="HighscoreLabel" type="Label" parent="Scores"]
+layout_mode = 0
+offset_top = -36.0
+offset_right = 82.0
+offset_bottom = -10.0
+text = "Highscore:"
+
+[node name="Menus" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_top = -65.0
+offset_right = 37.0
+offset_bottom = -25.0
+
+[node name="PauseMenu" parent="Menus" instance=ExtResource("3_ywbxn")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = -117.0
+offset_bottom = -117.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="OptionsMenu" parent="Menus" instance=ExtResource("4_d8wlx")]
+visible = false
+custom_minimum_size = Vector2(600, 250)
+layout_direction = 2
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -291.0
+offset_top = -168.0
+offset_right = 309.0
+offset_bottom = 82.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="DeathScreen" parent="." instance=ExtResource("5_hf7ot")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3, -31)
+
+[node name="ObstacleSpawner" type="Node2D" parent="."]
+position = Vector2(650, 0)
+script = ExtResource("1_tcn57")
+obstacle_scenes = Array[PackedScene]([ExtResource("4_b2mwa"), ExtResource("5_dft8f")])
+
+[node name="ObstacleContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_0dtor")]
+position = Vector2(-450, 265)
+scale = Vector2(0.479999, 0.72)
+
+[node name="Platform" parent="." instance=ExtResource("5_wgmp7")]
+position = Vector2(0, 265)

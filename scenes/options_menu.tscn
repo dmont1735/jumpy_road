@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmtlio81enyou"]
+
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_un80e"]
+
+[node name="OptionsMenu" type="Control"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_un80e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VolumeControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/VolumeControl"]
+layout_mode = 2
+text = "Main Volume"
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer/VolumeControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+
+[node name="MuteAll" type="CheckBox" parent="MarginContainer/VBoxContainer/VolumeControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mute all sound"
+
+[node name="MusicControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/MusicControl"]
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="HSlider" parent="MarginContainer/VBoxContainer/MusicControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+
+[node name="MuteMusic" type="CheckBox" parent="MarginContainer/VBoxContainer/MusicControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mute music"
+
+[node name="SoundEffectsControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EffectsVolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/SoundEffectsControl"]
+layout_mode = 2
+text = "Effects Volume"
+horizontal_alignment = 1
+
+[node name="EffectsVolume" type="HSlider" parent="MarginContainer/VBoxContainer/SoundEffectsControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+
+[node name="MuteEffects" type="CheckBox" parent="MarginContainer/VBoxContainer/SoundEffectsControl"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mute effects"
+
+[node name="ResolutionControl" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="MarginContainer/VBoxContainer/ResolutionControl"]
+layout_mode = 2
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="Resolution" type="OptionButton" parent="MarginContainer/VBoxContainer/ResolutionControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+selected = 2
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1080x720"
+popup/item_2/id = 2
+
+[node name="Fullscreen" type="CheckBox" parent="MarginContainer/VBoxContainer/ResolutionControl"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeControl/Volume" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/VolumeControl/MuteAll" to="." method="_on_mute_all_check_box_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ResolutionControl/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/ResolutionControl/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_button_pressed"]
