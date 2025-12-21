@@ -1,24 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://ded3y4phcha40"]
+[gd_scene load_steps=23 format=3 uid="uid://ded3y4phcha40"]
 
 [ext_resource type="PackedScene" uid="uid://c3aaaanswou8a" path="res://scenes/player.tscn" id="1_0dtor"]
 [ext_resource type="Script" path="res://scripts/Scores.gd" id="1_6c76c"]
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="1_dpd73"]
 [ext_resource type="Script" path="res://scripts/ObstacleSpawner.gd" id="1_tcn57"]
+[ext_resource type="Texture2D" uid="uid://cmp2avp0mev51" path="res://assets/sky.png" id="3_hi0k7"]
 [ext_resource type="PackedScene" uid="uid://u2xkiaktnp1a" path="res://scenes/pause_menu.tscn" id="3_ywbxn"]
 [ext_resource type="PackedScene" uid="uid://dwr2ijg6auuxn" path="res://scenes/car.tscn" id="4_b2mwa"]
 [ext_resource type="PackedScene" uid="uid://dmtlio81enyou" path="res://scenes/options_menu.tscn" id="4_d8wlx"]
-[ext_resource type="PackedScene" uid="uid://ckcx2dbwru4yn" path="res://scenes/helicopter.tscn" id="5_dft8f"]
 [ext_resource type="PackedScene" uid="uid://cjojueq0q3qxc" path="res://scenes/death_screen.tscn" id="5_hf7ot"]
 [ext_resource type="PackedScene" uid="uid://pgqrn4b43a63" path="res://scenes/platform.tscn" id="5_wgmp7"]
+[ext_resource type="PackedScene" uid="uid://uv8vg7toax1q" path="res://scenes/car_1.tscn" id="7_767te"]
+[ext_resource type="PackedScene" uid="uid://d0w8w4yk78co6" path="res://scenes/car_2.tscn" id="8_a6yge"]
+[ext_resource type="PackedScene" uid="uid://bs7yscctm4aht" path="res://scenes/car_3.tscn" id="9_tgjy7"]
+[ext_resource type="PackedScene" uid="uid://byywyj1568n0p" path="res://scenes/car_4.tscn" id="10_xch2y"]
+[ext_resource type="PackedScene" uid="uid://cyippvssr85ai" path="res://scenes/car_5.tscn" id="11_g13eh"]
+[ext_resource type="PackedScene" uid="uid://bnpdnk0a7ocni" path="res://scenes/car_6.tscn" id="12_w8h4e"]
+[ext_resource type="PackedScene" uid="uid://d26w3gaqjtxee" path="res://scenes/car_7.tscn" id="13_h5cps"]
+[ext_resource type="PackedScene" uid="uid://c01uf6fmyhkt6" path="res://scenes/car_8.tscn" id="14_skyom"]
+[ext_resource type="Texture2D" uid="uid://dwi1o7l7v2iap" path="res://assets/road.png" id="18_y26rd"]
+[ext_resource type="Texture2D" uid="uid://p4y8xlobnsga" path="res://assets/sky_1.png" id="19_dgbkj"]
+[ext_resource type="Texture2D" uid="uid://c0wp6j5sf4iwc" path="res://assets/sky_4.png" id="19_ukuxf"]
+[ext_resource type="Texture2D" uid="uid://cu37wchccvkft" path="res://assets/sky_3.png" id="21_80bis"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Scores" type="Control" parent="."]
+z_index = 100
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -502.0
-offset_top = -273.0
-offset_right = -462.0
-offset_bottom = -233.0
+offset_left = 78.0
+offset_top = 129.0
+offset_right = 118.0
+offset_bottom = 169.0
 script = ExtResource("1_6c76c")
 
 [node name="ScoreLabel" type="Label" parent="Scores"]
@@ -26,6 +41,7 @@ layout_mode = 0
 offset_top = -62.0
 offset_right = 48.0
 offset_bottom = -36.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Score:"
 
 [node name="HighscoreLabel" type="Label" parent="Scores"]
@@ -33,16 +49,18 @@ layout_mode = 0
 offset_top = -36.0
 offset_right = 82.0
 offset_bottom = -10.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Highscore:"
 
 [node name="Menus" type="Control" parent="."]
 top_level = true
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_left = -3.0
-offset_top = -65.0
-offset_right = 37.0
-offset_bottom = -25.0
+offset_left = 540.0
+offset_top = 362.0
+offset_right = 580.0
+offset_bottom = 402.0
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("3_ywbxn")]
 visible = false
@@ -72,20 +90,76 @@ grow_vertical = 1
 
 [node name="DeathScreen" parent="." instance=ExtResource("5_hf7ot")]
 visible = false
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-3, -31)
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="ObstacleSpawner" type="Node2D" parent="."]
-position = Vector2(650, 0)
+position = Vector2(1290, 599)
 script = ExtResource("1_tcn57")
-obstacle_scenes = Array[PackedScene]([ExtResource("4_b2mwa"), ExtResource("5_dft8f")])
+obstacle_scenes = Array[PackedScene]([ExtResource("4_b2mwa"), ExtResource("7_767te"), ExtResource("8_a6yge"), ExtResource("9_tgjy7"), ExtResource("10_xch2y"), ExtResource("11_g13eh"), ExtResource("12_w8h4e"), ExtResource("13_h5cps"), ExtResource("14_skyom")])
 
 [node name="ObstacleContainer" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_0dtor")]
-position = Vector2(-450, 265)
-scale = Vector2(0.479999, 0.72)
+position = Vector2(126, 627)
 
 [node name="Platform" parent="." instance=ExtResource("5_wgmp7")]
-position = Vector2(0, 265)
+position = Vector2(540, 624)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_dpd73")
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
+texture_repeat = 2
+texture = ExtResource("3_hi0k7")
+centered = false
+
+[node name="Sky_far" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_far"]
+modulate = Color(1, 1, 1, 0.392157)
+texture_repeat = 2
+texture = ExtResource("19_dgbkj")
+centered = false
+offset = Vector2(200, 20)
+
+[node name="Sky_closer" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_closer"]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 2
+texture = ExtResource("21_80bis")
+centered = false
+offset = Vector2(100, 50)
+
+[node name="Sky_closest" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_closest"]
+modulate = Color(1, 1, 1, 0.784314)
+texture_repeat = 2
+texture = ExtResource("19_ukuxf")
+centered = false
+offset = Vector2(-100, -50)
+
+[node name="Road" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Road"]
+texture_repeat = 2
+texture = ExtResource("18_y26rd")
+centered = false

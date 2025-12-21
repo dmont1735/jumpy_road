@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbsl3f3spbw4h"]
+
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="1_rmnr4"]
+[ext_resource type="Texture2D" uid="uid://cmp2avp0mev51" path="res://assets/sky.png" id="2_5urf2"]
+[ext_resource type="Texture2D" uid="uid://p4y8xlobnsga" path="res://assets/sky_1.png" id="3_ju2ug"]
+[ext_resource type="Texture2D" uid="uid://cu37wchccvkft" path="res://assets/sky_3.png" id="4_qmwpw"]
+[ext_resource type="Texture2D" uid="uid://c0wp6j5sf4iwc" path="res://assets/sky_4.png" id="5_coula"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_rmnr4")
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+texture_repeat = 2
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture_repeat = 2
+texture = ExtResource("2_5urf2")
+centered = false
+
+[node name="Sky_far" type="ParallaxLayer" parent="."]
+texture_repeat = 2
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky_far"]
+modulate = Color(1, 1, 1, 0.392157)
+texture_repeat = 2
+texture = ExtResource("3_ju2ug")
+centered = false
+offset = Vector2(200, 20)
+
+[node name="Sky_closer" type="ParallaxLayer" parent="."]
+texture_repeat = 2
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky_closer"]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 2
+texture = ExtResource("4_qmwpw")
+centered = false
+offset = Vector2(100, 50)
+
+[node name="Sky_closest" type="ParallaxLayer" parent="."]
+texture_repeat = 2
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1080, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky_closest"]
+modulate = Color(1, 1, 1, 0.784314)
+texture_repeat = 2
+texture = ExtResource("5_coula")
+centered = false
+offset = Vector2(-100, -50)

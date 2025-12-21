@@ -1,17 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://pgqrn4b43a63"]
-
-[ext_resource type="Texture2D" uid="uid://fana0qissaiy" path="res://icon.svg" id="1_io2si"]
+[gd_scene load_steps=2 format=3 uid="uid://pgqrn4b43a63"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4vig3"]
 
 [node name="Platform" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(0, 32)
-scale = Vector2(12.92, 0.5)
-texture = ExtResource("1_io2si")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_4vig3")

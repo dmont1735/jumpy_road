@@ -30,7 +30,6 @@ func add_score(value):
 			highscore = score
 
 func _process(delta):
-		
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
 		if is_options:

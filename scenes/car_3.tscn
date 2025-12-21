@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwr2ijg6auuxn"]
+[gd_scene load_steps=5 format=3 uid="uid://bs7yscctm4aht"]
 
-[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_l38v2"]
-[ext_resource type="Texture2D" uid="uid://du013k6l0q1n3" path="res://assets/car_0.png" id="2_ji8dt"]
+[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_a41if"]
+[ext_resource type="Texture2D" uid="uid://bbkars636l13b" path="res://assets/car_3.png" id="2_6ew8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_082a5"]
 size = Vector2(131.395, 62)
@@ -12,14 +12,14 @@ size = Vector2(131.395, 63)
 [node name="Car" type="AnimatableBody2D" groups=["obstacles"]]
 scale = Vector2(1.6, 1.6)
 sync_to_physics = false
-script = ExtResource("1_l38v2")
+script = ExtResource("1_a41if")
 metadata/move_speed = 250.0
 metadata/type = "car"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
 scale = Vector2(0.160001, 0.120001)
-texture = ExtResource("2_ji8dt")
+texture = ExtResource("2_6ew8u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.38615e-07, -32)
@@ -35,5 +35,5 @@ shape = SubResource("RectangleShape2D_ttg40")
 position = Vector2(0, -32)
 scale = Vector2(6.52, 3.24)
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered" flags=18]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited" flags=18]

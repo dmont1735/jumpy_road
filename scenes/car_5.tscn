@@ -1,33 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckcx2dbwru4yn"]
+[gd_scene load_steps=5 format=3 uid="uid://cyippvssr85ai"]
 
-[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_lirgm"]
-[ext_resource type="Texture2D" uid="uid://fana0qissaiy" path="res://icon.svg" id="2_4j2i8"]
+[ext_resource type="Script" path="res://scripts/ObstacleMovement.gd" id="1_5eljb"]
+[ext_resource type="Texture2D" uid="uid://bu6llq8u0nkct" path="res://assets/car_5.png" id="2_oa6nv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_082a5"]
-size = Vector2(126, 62)
+size = Vector2(131.395, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttg40"]
-size = Vector2(130, 63)
+size = Vector2(131.395, 63)
 
-[node name="Helicopter" type="AnimatableBody2D" groups=["obstacles"]]
+[node name="Car" type="AnimatableBody2D" groups=["obstacles"]]
+scale = Vector2(1.6, 1.6)
 sync_to_physics = false
-script = ExtResource("1_lirgm")
+script = ExtResource("1_5eljb")
 metadata/move_speed = 250.0
-metadata/type = "helicopter"
+metadata/type = "car"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
-scale = Vector2(1, 0.5)
-texture = ExtResource("2_4j2i8")
+scale = Vector2(0.160001, 0.120001)
+texture = ExtResource("2_oa6nv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(1.38615e-07, -32)
 shape = SubResource("RectangleShape2D_082a5")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["obstacle_hitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -32.5)
+position = Vector2(1.38615e-07, -32.5)
 shape = SubResource("RectangleShape2D_ttg40")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
