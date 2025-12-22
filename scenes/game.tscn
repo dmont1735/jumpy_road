@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ded3y4phcha40"]
+[gd_scene load_steps=24 format=3 uid="uid://ded3y4phcha40"]
 
 [ext_resource type="PackedScene" uid="uid://c3aaaanswou8a" path="res://scenes/player.tscn" id="1_0dtor"]
 [ext_resource type="Script" path="res://scripts/Scores.gd" id="1_6c76c"]
@@ -19,9 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://d26w3gaqjtxee" path="res://scenes/car_7.tscn" id="13_h5cps"]
 [ext_resource type="PackedScene" uid="uid://c01uf6fmyhkt6" path="res://scenes/car_8.tscn" id="14_skyom"]
 [ext_resource type="Texture2D" uid="uid://dwi1o7l7v2iap" path="res://assets/road.png" id="18_y26rd"]
-[ext_resource type="Texture2D" uid="uid://p4y8xlobnsga" path="res://assets/sky_1.png" id="19_dgbkj"]
-[ext_resource type="Texture2D" uid="uid://c0wp6j5sf4iwc" path="res://assets/sky_4.png" id="19_ukuxf"]
-[ext_resource type="Texture2D" uid="uid://cu37wchccvkft" path="res://assets/sky_3.png" id="21_80bis"]
+[ext_resource type="Texture2D" uid="uid://vdt6mlersaih" path="res://assets/clouds.png" id="19_pf1bo"]
+[ext_resource type="Texture2D" uid="uid://xkkncurflqty" path="res://assets/clouds_1.png" id="20_elpf5"]
+[ext_resource type="Texture2D" uid="uid://df8dyw5uj2wgp" path="res://assets/clouds_2.png" id="21_beogg"]
+[ext_resource type="Texture2D" uid="uid://dxt5lhckdebvj" path="res://assets/clouds_3.png" id="22_7k4ot"]
 
 [node name="Game" type="Node2D"]
 
@@ -107,6 +108,7 @@ position = Vector2(126, 627)
 position = Vector2(540, 624)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
 script = ExtResource("1_dpd73")
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -119,41 +121,51 @@ texture_repeat = 2
 texture = ExtResource("3_hi0k7")
 centered = false
 
-[node name="Sky_far" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_repeat = 2
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(1080, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_far"]
-modulate = Color(1, 1, 1, 0.392157)
-texture_repeat = 2
-texture = ExtResource("19_dgbkj")
-centered = false
-offset = Vector2(200, 20)
-
-[node name="Sky_closer" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_repeat = 2
-motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(1080, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_closer"]
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(1, 1, 1, 0.588235)
 texture_repeat = 2
-texture = ExtResource("21_80bis")
-centered = false
-offset = Vector2(100, 50)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(4320, 0)
 
-[node name="Sky_closest" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds"]
 texture_repeat = 2
-motion_scale = Vector2(0.6, 0.6)
-motion_mirroring = Vector2(1080, 0)
+position = Vector2(540, 245)
+texture = ExtResource("19_pf1bo")
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky_closest"]
-modulate = Color(1, 1, 1, 0.784314)
+[node name="Clouds2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(1, 1, 1, 0.588235)
 texture_repeat = 2
-texture = ExtResource("19_ukuxf")
-centered = false
-offset = Vector2(-100, -50)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(4320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds2"]
+texture_repeat = 2
+position = Vector2(1328, 245)
+texture = ExtResource("20_elpf5")
+
+[node name="Clouds3" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 2
+position = Vector2(1290, 0)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(4320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds3"]
+texture_repeat = 2
+position = Vector2(1328, 245)
+texture = ExtResource("21_beogg")
+
+[node name="Clouds4" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 2
+position = Vector2(2449, 0)
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(4320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds4"]
+texture_repeat = 2
+position = Vector2(1328, 245)
+texture = ExtResource("22_7k4ot")
 
 [node name="Road" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_repeat = 2

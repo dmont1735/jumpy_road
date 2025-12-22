@@ -84,4 +84,4 @@ position = Vector2(17.4634, -63.0202)
 rotation = 0.0343744
 scale = Vector2(0.16139, 0.16139)
 sprite_frames = SubResource("SpriteFrames_44tc1")
-animation = &"run"
+animation = &"fall"
