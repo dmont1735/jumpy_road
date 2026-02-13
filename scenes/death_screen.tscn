@@ -74,6 +74,7 @@ size_flags_horizontal = 3
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="Buttons"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Quit"
