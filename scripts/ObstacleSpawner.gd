@@ -25,4 +25,3 @@ func spawn_obstacle():
 func _on_obstacle_exited():
 	speed_ramp += 0.05
 	spawn_obstacle()
-

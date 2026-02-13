@@ -101,7 +101,7 @@ obstacle_scenes = Array[PackedScene]([ExtResource("4_b2mwa"), ExtResource("7_767
 
 [node name="ObstacleContainer" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_0dtor")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_0dtor")]
 position = Vector2(126, 627)
 
 [node name="Platform" parent="." instance=ExtResource("5_wgmp7")]
